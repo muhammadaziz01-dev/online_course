@@ -63,13 +63,13 @@ const index = () => {
             <ConfigProvider
               theme={{
                 token: {
-                  colorPrimary: "#D55505",
+                  colorPrimary: "#001529",
                 },
                 components: {
                   Input: {
-                    activeBorderColor: "#D55505",
-                    activeShadow: "#D55505",
-                    hoverBorderColor: "#D55505",
+                    activeBorderColor: "#001529",
+                    activeShadow: "#001529",
+                    hoverBorderColor: "#001529",
                   },
                 },
               }}
@@ -142,128 +142,19 @@ const index = () => {
                 </Form.Item>
               </Form>
             </ConfigProvider>
-            {/* <Formik
-              initialValues={{first_name: "", last_name:"",  phone_number: "" , email: "", password: "" }}
-              validationSchema={signUpValidationSchema}
-              onSubmit={signUp}
-            >
-              {({ errors, touched }: FormikProps<any>) => (
-              <Form className="w-full flex flex-col gap-[8px]">
-              <h2 className=" text-center text-[#D55200] text-[22px] font-semibold">Registration</h2>
-                <Field
-                  as={TextField}
-                  label="First name"
-                  sx={{ "& input": { color: "#000", fontSize: "20px" } }}
-                  type="text"
-                  name="first_name"
-                  error={touched.first_name && !!errors.first_name}
-                  className="w-[100%] mb-1 outline-none py-0"
-                  helperText={
-                    <ErrorMessage
-                  name="first_name"
-                  component="p"
-                  className="mb-1 text-red-500 text-center"/>
-                  }
-                />
-                <Field
-                  as={TextField}
-                  label="Last name"
-                  sx={{ "& input": { color: "#000", fontSize: "20px" } }}
-                  type="text"
-                  name="last_name"
-                  error={touched.last_name && !!errors.last_name}
-                  className="w-[100%] mb-1 outline-none py-0"
-                  helperText={
-                    <ErrorMessage
-                  name="last_name"
-                  component="p"
-                  className="mb-1 text-red-500 text-center"/>
-                  }
-                />
-
-                <Field
-                 as={TextField}
-                 label="Telafono"
-                 type="tel"
-                 inputRef={inputRef2}
-                 name="phone_number"
-                 error={touched.phone_number && !!errors.phone_number}
-                 className="w-full mb-1 outline-none"
-                 helperText={
-                    <ErrorMessage name="phone_number" component="p" className="mb-1 text-red-500 text-center" />
-                 }
-                />
-                
-
-                <Field
-                  as={TextField}
-                  label="Email"
-                  sx={{ "& input": { color: "#000", fontSize: "20px" } }}
-                  type="email"
-                  name="email"
-                  error={touched.email &&!!errors.email}
-                  className="w-[100%] mb-1 outline-none py-0"
-                  helperText={
-                    <ErrorMessage
-                  name="email"
-                  component="p"
-                  className="mb-1 text-red-500 text-center"/>
-                  }
-                />
-                
-
-                <Field
-                  as={TextField}
-                  label="Password"
-                  sx={{ "& input": { color: "#000", fontSize: "20px" } }}
-                  type={showPassword ? "text" : "password"}
-                  name="password"
-                  error={touched.password &&!!errors.password}
-                  className="w-[100%] mb-1 outline-none py-0"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <IconButton
-                          onClick={() => setShowPassword(!showPassword)}
-                          edge="end"
-                        >
-                          {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  }}
-                  helperText={
-                    <ErrorMessage
-                    name="password"
-                    component="p"
-                    className="mb-1 text-red-500 text-center"/>
-                  }
-                />
-                
-
-                <Button
-                  sx={{ fontSize: "16px", fontWeight: "600", padding: "14px" ,backgroundColor: "#D55200" ,"&:hover" :{background: "#D52200"} }}
-                  variant="contained"
-                  type="submit"
-                  className="w-[100%]"
-                >
-                  Sign Up
-                </Button>
-              </Form>
-              )}
-            </Formik> */}
+           
           </div>
           <div className="form-container sign-in">
             <ConfigProvider
               theme={{
                 token: {
-                  colorPrimary: "#D55505",
+                  colorPrimary: "#001529",
                 },
                 components: {
                   Input: {
-                    activeBorderColor: "#D55505",
-                    activeShadow: "#D55505",
-                    hoverBorderColor: "#D55505",
+                    activeBorderColor: "#001529",
+                    activeShadow: "#001529",
+                    hoverBorderColor: "#001529",
                   },
                 },
               }}
@@ -325,76 +216,7 @@ const index = () => {
                 </Form.Item>
               </Form>
             </ConfigProvider>
-            {/* <Formik
-              initialValues={{ phone_number: "", password: "" }}
-              validationSchema={signInValidationSchema}
-              onSubmit={signIn}
-            >
-              {({ errors, touched }: FormikProps<any>) => (
-              <Form className="w-full flex flex-col gap-[15px]">
-                <h2 className=" text-center text-[#D55200] text-[22px] font-semibold">login</h2>
-                <Field
-                 as={TextField}
-                 label="Telafono"
-                 type="tel"
-                 inputRef={inputRef}
-                 name="phone_number"
-                 error={touched.phone_number && !!errors.phone_number}
-                 className="w-full mb-1 outline-none"
-                 helperText={
-                    <ErrorMessage name="phone_number" component="p" className="mb-1 text-red-500 text-center" />
-                 }
-                />
-
-                <p
-                  onClick={() => {
-                    alert("therefore, it should not be forgotten : ) ");
-                    localStorage.clear();
-                  }}
-                  className="text-[20px] text-[#D52200] forgrt-pasword hover:text-[#d86f59] duration-200 cursor-pointer"
-                >
-                  Forgot password?
-                </p>
-
-                <Field
-                  as={StyledTextField}
-                  label="Password"
-                  sx={{ "& input": { color: "#000", fontSize: "20px" } }}
-                  type={showPassword ? "text" : "password"}
-                  name="password"
-                  error={touched.password && !!errors.password}
-                  className="w-[100%] mb-3 outline-none py-0"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <IconButton
-                          onClick={() => setShowPassword(!showPassword)}
-                          edge="end"
-                        >
-                          {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  }}
-                  helperText={
-                    <ErrorMessage
-                  name="password"
-                  component="p"
-                  className="mb-3 text-red-500 text-center"/>
-                  }
-                />
-
-                <Button
-                  sx={{ fontSize: "16px", fontWeight: "600", padding: "14px" , backgroundColor: "#D55200", "&:hover" :{background: "#D52200"} }}
-                  variant="contained"
-                  type="submit"
-                  className="w-[100%]"
-                >
-                  Sign In
-                </Button>
-              </Form>
-              )}
-            </Formik> */}
+           
           </div>
           <div className="toggle-container">
             <div className="toggle">
@@ -402,7 +224,7 @@ const index = () => {
                 <h1>Welcome Back!</h1>
                 <p>Enter your personal details to use all of site features</p>
                 <button
-                  className="bg-white  rounded-md  text-[#D55505] px-3 py-1  mt-3 font-medium"
+                  className="bg-white  rounded-md  text-[#001529] px-3 py-1  mt-3 font-medium"
                   onClick={() => setIsSignUp(false)}
                 >
                   Sign In
@@ -415,7 +237,7 @@ const index = () => {
                   features
                 </p>
                 <button
-                  className="bg-white  rounded-md  text-[#D55505] px-3 py-1  mt-3 font-medium"
+                  className="bg-white  rounded-md  text-[#001529] px-3 py-1  mt-3 font-medium"
                   onClick={() => setIsSignUp(true)}
                 >
                   Sign Up
