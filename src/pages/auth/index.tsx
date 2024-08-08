@@ -1,53 +1,50 @@
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import {auth} from "../../service/auth"
 
 import "./style.scss";
 import { Button, ConfigProvider, Form, Input } from "antd";
 
 const index = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [isSignUp, setIsSignUp] = useState(false);
 
   //Aftarization -> signin and signup <-=-=-=--=-=-=-==-=-=-=-
   const signUp = async (values: any) => {
     console.log(values);
 
-    //  try{
-    //    const res = await auth.signup(usrData);
-    //   //  console.log(res);
-    //    if(res.status === 201){
-    //       toast.success("Adbmin created successfully")
-    //       setTimeout(()=>{
-    //         setIsSignUp(false);
-    //       }, 1000)
-    //    }
-    //  }catch(err:any){
-    //    console.log(err);
-    //    toast.error("Error " +  err?.message)
-    //  }
+     try{
+       const res = await auth.signup(values);
+       console.log(res);
+       if(res.status === 201){
+          // toast.success("Adbmin created successfully")
+          setTimeout(()=>{
+            setIsSignUp(false);
+          }, 1000)
+       }
+     }catch(err:any){
+       console.log(err);
+      //  toast.error("Error " +  err?.message)
+     }
   };
 
   const signIn = async (values: any) => {
-    console.log(values);
+    try{
+      const res = await auth.signin(values);
+      console.log(res);
+      if(res.status === 201){
+        // setCookies("access_token", res?.data?.data?.tokens?.access_token);
+        // setCookies("admin_id", res?.data?.data?.data?.id);
 
-    // try{
-    //   const res = await auth.signin(usrData);
-    //   if(res.status === 201){
-    //     setCookies("access_token", res?.data?.data?.tokens?.access_token);
-    //     setCookies("refresh_token", res?.data?.data?.tokens?.refresh_token);
-    //     setCookies("admin_data", res?.data?.data?.admin);
-    //     setCookies("admin_id", res?.data?.data?.data?.id);
-
-    //     // setCookies("refresh_token", res?.data?.tokens?.refresh_token);
-    //     toast.success("Sign in success")
-    //     setTimeout(()=>{
-    //         navigate("/home");
-    //     }, 1000)
-    //   }
-    // }catch(error:any){
-    //   console.log(error);
-    //   toast.error("Error " +  error?.message)
-    // }
+        // toast.success("Sign in success")
+        setTimeout(()=>{
+            navigate("/home");
+        }, 1000)
+      }
+    }catch(error:any){
+      console.log(error);
+      // toast.error("Error " +  error?.message)
+    }
   };
 
   //=-=-=-=-=-=---=---=--=-=-=-=-=-=-=-=-=-=-=-=---=---=--
@@ -95,7 +92,7 @@ const index = () => {
                     style={{ width: 300 }}
                     rules={[{ required: true }]}
                   >
-                    <Input style={{ width: 300 }} size="large" type="email" />
+                    <Input style={{ width: 300 , fontSize:16 }} size="large" type="email" />
                   </Form.Item>
 
                   {/* Password */}
@@ -115,7 +112,7 @@ const index = () => {
                     //   },
                     ]}
                   >
-                    <Input.Password style={{ width: "100%" }} size="large" />
+                    <Input.Password style={{ width: "100%" , fontSize:16 }} size="large" />
                   </Form.Item>
 
                   {/* role */}
@@ -126,7 +123,7 @@ const index = () => {
                     style={{ width: "100%" }}
                     rules={[{ required: true }]}
                   >
-                    <Input style={{ width: "100%" }} size="large" />
+                    <Input style={{ width: "100%" , fontSize:16 }} size="large" />
                   </Form.Item>
                 </div>
                 <Form.Item>
@@ -180,7 +177,7 @@ const index = () => {
                     style={{ width: 300 }}
                     rules={[{ required: true }]}
                   >
-                    <Input style={{ width: 300 }} size="large" type="email" />
+                    <Input style={{ width: 300 , fontSize:16}} size="large" type="email" />
                   </Form.Item>
 
                   {/* Password */}
@@ -200,7 +197,7 @@ const index = () => {
                     //   },
                     ]}
                   >
-                    <Input.Password style={{ width: "100%" }} size="large" />
+                    <Input.Password style={{ width: "100%", fontSize:16 }} size="large" />
                   </Form.Item>
                 </div>
                 <Form.Item>
@@ -209,7 +206,7 @@ const index = () => {
                     htmlType="submit"
                     size="large"
                     //   loading={loader}
-                    style={{ width: 300 }}
+                    style={{ width: 300 ,  }}
                   >
                     Submit
                   </Button>
