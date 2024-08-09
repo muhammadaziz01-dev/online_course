@@ -18,6 +18,7 @@
             "@components": ["./src/components"],
             "@containers": ["./src/components/containers"],
             "@ui": ["./src/components/ui"],
+            "@modals": ["./src/components/modals"],
             "@sections": ["./src/components/sections"],
 
             "@layut": ["./src/layout"],

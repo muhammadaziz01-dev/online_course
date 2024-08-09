@@ -9,7 +9,7 @@ import {
   BookOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
-import { Button, Layout, Menu, theme } from "antd";
+import { Button, Layout, Menu, theme  } from "antd";
 // rrd
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 // style
@@ -119,6 +119,7 @@ const Index = () => {
             borderRadius: borderRadiusLG,
           }}
         >
+        
           <Outlet />
         </Content>
       </Layout>

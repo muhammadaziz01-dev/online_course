@@ -12,7 +12,7 @@ const App: React.FC<TableProps> = ({ columns, data, boolean }) => {
         columns={columns}
         dataSource={data}
         bordered
-        scroll={{ y: 800 }}
+        scroll={{ y: 400 }}
         className="global-table"
         pagination={false}
       />

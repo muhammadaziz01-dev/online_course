@@ -26,7 +26,7 @@ interface postCourses {
 }
 
 interface UpdateCourses extends postCourses{
-    id: number;
+    _id: number;
 }
 
 export interface CoursesRequest {

@@ -10,6 +10,7 @@ export default defineConfig({
       { find: '@pages', replacement: '/src/pages' },
       { find: '@interface', replacement: '/src/types/interface' },
       { find: '@ui', replacement: '/src/components/ui' },
+
       { find: '@modals', replacement: '/src/components/modals' },
       { find: '@drawers', replacement: '/src/components/drawers' },
 

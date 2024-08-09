@@ -11,13 +11,9 @@ const useCoursesStore = create <StoreCourses> ((set)=>({
         try{
            set({isLoader: true})
            const response = await courses.getCourses()
-           console.log(response);
-           
+        //    console.log(response);
            if(response.status === 200){
                set({dataCourses: response?.data});
-               
-               
-            //    set({totlCount: respons?.data?.data?.count})
            }
            set({isLoader: false})
        }catch(error){
@@ -31,8 +27,8 @@ const useCoursesStore = create <StoreCourses> ((set)=>({
         
             try{
                 const response = await courses.postCourses(data)
-                console.log(response)
-                if(response.status === 200){
+                // console.log(response)
+                if(response.status === 201){
                     set((state)=>({dataCourses: [...state.dataCourses, response?.data] }))
                     return response?.status
                 }
@@ -46,9 +42,8 @@ const useCoursesStore = create <StoreCourses> ((set)=>({
            const response = await courses.deleteCourses(id)
            console.log(response)
            if(response.status === 200){
-               set((state)=>({dataCourses: state.dataCourses.filter((el:any)=>el.id !== id)})) 
-            //    set((state)=>({totlCount: state.totlCount -= 1}))
-            // toast.success("City deleted successfully")
+               set((state)=>({dataCourses: state.dataCourses.filter((el:any)=>el._id !== id)})) 
+               return response?.status
            }
         }catch(error:any){
             console.log(error)
@@ -58,9 +53,9 @@ const useCoursesStore = create <StoreCourses> ((set)=>({
     updateDataCourses: async(data)=>{
             try{
                 const response = await courses.updateCourses(data);
-                console.log(response);
+                // console.log(response);
                 if(response?.status === 200){
-                    set((state)=>({dataCourses: state.dataCourses.map((el:any)=>el.id == data?.id ? data : el)}))
+                    set((state)=>({dataCourses: state.dataCourses.map((el:any)=>el._id == data?._id ? data : el)}))
                     return response?.status
                 }
                 
