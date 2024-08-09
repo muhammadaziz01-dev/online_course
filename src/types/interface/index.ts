@@ -16,6 +16,7 @@ export interface Request{
 }
 // =-=-=---=--=--=-=-=--=--=--=--=---=-=-=-=--
 
+
 // ------ Courses Request ------------------
 
 interface postCourses {
@@ -47,6 +48,34 @@ export interface StoreCourses {
 //=-=-=-========-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 
+// ------ Lessons Request ------------------
+
+interface postLessons {
+    title: string;
+    video: string;
+    courseId: string;
+}
+
+interface UpdateLessons extends postLessons{
+    _id: number;
+}
+
+export interface LessonsRequest {
+    getLessons : (id:string|undefined)=> any,
+    postLessons : (data:postLessons)=> any,
+    deleteLessons : (id:string)=> any,
+    updateLessons: (data:UpdateLessons)=> any,
+}
+
+export interface StoreLessons {
+    isLoader:boolean;
+    dataLessons:any[];
+    getDataLessons: (id:string|undefined)=> Promise <any>;
+    postDataLessons: (data:postLessons)=> Promise <any>;
+    deleteDataLessons: (id:string)=> Promise <any>;
+    updateDataLessons: (data:UpdateLessons)=> Promise <any>;
+}
+//=-=-=-========-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 
 

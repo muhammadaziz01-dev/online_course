@@ -1,4 +1,5 @@
 import ModalCourses from "./courses";
-import ModalDelete from "./modal-delete"
+import ModalDelete from "./modal-delete";
+import ModalLessons from "./lessons"
 
-export {ModalCourses , ModalDelete}
+export {ModalCourses , ModalDelete , ModalLessons}

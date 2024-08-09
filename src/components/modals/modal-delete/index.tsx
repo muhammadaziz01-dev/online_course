@@ -1,17 +1,18 @@
 import type { PopconfirmProps } from "antd";
 import { Button, message, Popconfirm } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
-import { useCoursesStore } from "@stor";
+import { useCoursesStore , useLassonsStore} from "@stor";
 
-const Index = ({id}:{id:string}) => {
+const Index = ({id , title}:{id:string , title:string}) => {
   const { deleteDataCourses } = useCoursesStore();
+  const { deleteDataLessons } = useLassonsStore();
 
   const confirm: PopconfirmProps["onConfirm"] = async(e) => {
     console.log(e);
     try{
-        const status = await deleteDataCourses(id);
+        const status =  title == "lesson" ?  await deleteDataLessons(id):  await deleteDataCourses(id);
         if(status === 200){
-            message.success("Course deleted successfully");
+            message.success(title == "lesson" ? "Lesson deleted successfully" : "Course deleted successfully");
         }else{
             message.error("Error: Failed to delete course");
         }

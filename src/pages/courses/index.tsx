@@ -1,13 +1,16 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import {ArrowRightOutlined} from "@ant-design/icons"
+import { Button, Image, Spin } from "antd";
+
 import { Table } from "@ui";
 import { ModalCourses, ModalDelete } from "@modals";
 import { useCoursesStore } from "@stor";
 import "./style.scss";
-import { Image, Spin } from "antd";
 
 const index = () => {
   const { getDataCourses, dataCourses, isLoader } = useCoursesStore();
-  console.log(dataCourses);
+  const navigate = useNavigate();
 
   // function useEffect <----
   useEffect(() => {
@@ -64,7 +67,9 @@ const index = () => {
       render: (_: any, record: any) => (
         <div className="flex gap-5 accent-inherit justify-center">
           <ModalCourses title="edit" data={record} id={record?._id} />
-          <ModalDelete id={record?._id} />
+          <ModalDelete id={record?._id} title="course" />
+          <Button style={{color: "#767676",border: "none",boxShadow: "none",}}
+           onClick={() => navigate(`/home/courses/${record?._id}`)}>Lessons <ArrowRightOutlined /></Button>
           {/* <button onClick={() => console.log(record?._id)}>Delet</button> */}
         </div>
       ),
