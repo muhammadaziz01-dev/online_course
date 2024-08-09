@@ -1,4 +1,4 @@
-import { Table } from "@ui"
+
 import "./style.scss"
 
 const index = () => {
@@ -6,7 +6,6 @@ const index = () => {
         <>
         <div className=" text-center py-2">Home</div>
 
-        <Table/>
         </>
     );
 };

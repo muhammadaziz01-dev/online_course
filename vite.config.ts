@@ -16,7 +16,7 @@ export default defineConfig({
       { find: '@cookie', replacement: '/src/utils/cookie.ts' },
       {find: "@service-auth" , replacement: "/src/service/auth"},
 
-      { find: '@store', replacement: '/src/store'},
+      { find: '@stor', replacement: '/src/stor'},
 
     ]
   }

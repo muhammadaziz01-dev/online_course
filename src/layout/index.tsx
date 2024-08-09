@@ -10,7 +10,7 @@ import {
   LogoutOutlined,
 } from "@ant-design/icons";
 import { Button, Layout, Menu, theme } from "antd";
-//rrd
+// rrd
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 // style
 import "./style.scss";
@@ -22,7 +22,7 @@ const Index = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
-  // my code  start <--------------------------------
+  // my code start <--------------------------------
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
@@ -43,6 +43,20 @@ const Index = () => {
     },
   ];
 
+  const menuItems = navList.map((el) => ({
+    key: el.path,
+    icon: el.icon,
+    label: (
+      <NavLink className="flex items-center gap-6" to={el.path}>
+       
+         {el.title}
+      </NavLink>
+    ),
+    className: pathname === el.path
+      ? "custom-active-item text-[18px]"
+      : "text-[18px]",
+  }));
+
   return (
     <Layout className="">
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -51,36 +65,11 @@ const Index = () => {
           theme="dark"
           mode="inline"
           defaultSelectedKeys={["1"]}
+          items={menuItems} // `items` prop'idan foydalaniladi
           style={{
             minHeight: "100vh",
           }}
-        >
-          {/* <div
-            className="logo"
-            style={{  textAlign: "center" }}
-          >
-            <img
-              src="https://img.freepik.com/premium-vector/online-course-logo-design-template_145155-3473.jpg"
-              alt="logo"
-              style={{ minWidth: "100%", height: "60px", objectFit: "fill" }}
-            />
-          </div> */}
-          {navList.map((el) => (
-            <Menu.Item
-              key={el.path}
-              className={
-                pathname === el.path
-                  ? "custom-active-item  text-[18px]   "
-                  : " text-[18px] "
-              }
-            >
-              <NavLink className="flex items-center gap-6" to={el.path}>
-                {" "}
-                <div className="mr-2">{el.icon}</div> {el.title}
-              </NavLink>
-            </Menu.Item>
-          ))}
-        </Menu>
+        />
       </Sider>
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer }}>
