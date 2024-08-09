@@ -1,49 +1,49 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {auth} from "../../service/auth"
+import { auth } from "../../service/auth";
 
 import "./style.scss";
-import { Button, ConfigProvider, Form, Input } from "antd";
+import { Button, ConfigProvider, Form, Input, message } from "antd";
+import { setCookies } from "../../utils/cookies";
 
 const index = () => {
   const navigate = useNavigate();
   const [isSignUp, setIsSignUp] = useState(false);
+  const [messageApi, contextHolder] = message.useMessage();
 
   //Aftarization -> signin and signup <-=-=-=--=-=-=-==-=-=-=-
   const signUp = async (values: any) => {
     console.log(values);
 
-     try{
-       const res = await auth.signup(values);
-       console.log(res);
-       if(res.status === 201){
-          // toast.success("Adbmin created successfully")
-          setTimeout(()=>{
-            setIsSignUp(false);
-          }, 1000)
-       }
-     }catch(err:any){
-       console.log(err);
-      //  toast.error("Error " +  err?.message)
-     }
+    try {
+      const res = await auth.signup(values);
+      console.log(res);
+      if (res.status === 201) {
+        messageApi.success("Signup successful");
+        setTimeout(() => {
+          setIsSignUp(false);
+        }, 1000);
+      }
+    } catch (err: any) {
+      console.log(err);
+      messageApi.error("Error " + err?.message);
+    }
   };
 
   const signIn = async (values: any) => {
-    try{
+    try {
       const res = await auth.signin(values);
       console.log(res);
-      if(res.status === 201){
-        // setCookies("access_token", res?.data?.data?.tokens?.access_token);
-        // setCookies("admin_id", res?.data?.data?.data?.id);
-
-        // toast.success("Sign in success")
-        setTimeout(()=>{
-            navigate("/home");
-        }, 1000)
+      if (res.status === 200) {
+        setCookies("access_token", res?.data?.token);
+        messageApi.success("Signin successful");
+        setTimeout(() => {
+          navigate("/home");
+        }, 1000);
       }
-    }catch(error:any){
+    } catch (error: any) {
       console.log(error);
-      // toast.error("Error " +  error?.message)
+      messageApi.error("Error " + error?.message);
     }
   };
 
@@ -51,6 +51,7 @@ const index = () => {
 
   return (
     <>
+      {contextHolder}
       <div className="auth-parent">
         <div
           className={`container-auth ${isSignUp ? "active" : ""}`}
@@ -92,7 +93,11 @@ const index = () => {
                     style={{ width: 300 }}
                     rules={[{ required: true }]}
                   >
-                    <Input style={{ width: 300 , fontSize:16 }} size="large" type="email" />
+                    <Input
+                      style={{ width: 300, fontSize: 16 }}
+                      size="large"
+                      type="email"
+                    />
                   </Form.Item>
 
                   {/* Password */}
@@ -106,13 +111,16 @@ const index = () => {
                         required: true,
                         message: "Please input your password!",
                       },
-                    //   {
-                    //     min: 6,
-                    //     message: "Please input at least 6 characters!",
-                    //   },
+                      //   {
+                      //     min: 6,
+                      //     message: "Please input at least 6 characters!",
+                      //   },
                     ]}
                   >
-                    <Input.Password style={{ width: "100%" , fontSize:16 }} size="large" />
+                    <Input.Password
+                      style={{ width: "100%", fontSize: 16 }}
+                      size="large"
+                    />
                   </Form.Item>
 
                   {/* role */}
@@ -123,7 +131,10 @@ const index = () => {
                     style={{ width: "100%" }}
                     rules={[{ required: true }]}
                   >
-                    <Input style={{ width: "100%" , fontSize:16 }} size="large" />
+                    <Input
+                      style={{ width: "100%", fontSize: 16 }}
+                      size="large"
+                    />
                   </Form.Item>
                 </div>
                 <Form.Item>
@@ -139,7 +150,6 @@ const index = () => {
                 </Form.Item>
               </Form>
             </ConfigProvider>
-           
           </div>
           <div className="form-container sign-in">
             <ConfigProvider
@@ -177,7 +187,11 @@ const index = () => {
                     style={{ width: 300 }}
                     rules={[{ required: true }]}
                   >
-                    <Input style={{ width: 300 , fontSize:16}} size="large" type="email" />
+                    <Input
+                      style={{ width: 300, fontSize: 16 }}
+                      size="large"
+                      type="email"
+                    />
                   </Form.Item>
 
                   {/* Password */}
@@ -191,13 +205,16 @@ const index = () => {
                         required: true,
                         message: "Please input your password!",
                       },
-                    //   {
-                    //     min: 6,
-                    //     message: "Please input at least 6 characters!",
-                    //   },
+                      //   {
+                      //     min: 6,
+                      //     message: "Please input at least 6 characters!",
+                      //   },
                     ]}
                   >
-                    <Input.Password style={{ width: "100%", fontSize:16 }} size="large" />
+                    <Input.Password
+                      style={{ width: "100%", fontSize: 16 }}
+                      size="large"
+                    />
                   </Form.Item>
                 </div>
                 <Form.Item>
@@ -206,14 +223,13 @@ const index = () => {
                     htmlType="submit"
                     size="large"
                     //   loading={loader}
-                    style={{ width: 300 ,  }}
+                    style={{ width: 300 }}
                   >
                     Submit
                   </Button>
                 </Form.Item>
               </Form>
             </ConfigProvider>
-           
           </div>
           <div className="toggle-container">
             <div className="toggle">
