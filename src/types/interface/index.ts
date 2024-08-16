@@ -48,8 +48,8 @@ export interface StoreCourses {
 //=-=-=-========-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 
-// ------ Lessons Request ------------------
 
+// ------ Lessons Request ------------------
 interface postLessons {
     title: string;
     video: string;
@@ -79,6 +79,50 @@ export interface StoreLessons {
 
 
 
+// ------ Users Request ------------------
+export interface UsersRequest {
+    getUsers : ()=> any,
+    deleteUsers : (id:string)=> any,
+}
+
+export interface StoreUsers {
+    isLoader:boolean;
+    dataUsers:any[];
+    getDataUsers: ()=> Promise <any>;
+    deleteDataUsers: (id:string)=> Promise <any>;
+}
+//=-=-=-========-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+
+
+// ------ Certificates Request ------------------
+interface postCertificates {
+    userId: string;
+    courseId: string;
+    issueDate: string;
+}
+
+interface UpdateCertificates extends postCertificates{
+    _id: number;
+}
+
+export interface CertificatesRequest {
+    getCertificates : ()=> any,
+    postCertificates : (data:postCertificates)=> any,
+    deleteCertificates : (id:string)=> any,
+    updateCertificates: (data:UpdateCertificates)=> any,
+}
+
+export interface StoreCertificates {
+    isLoader:boolean;
+    dataCertificates:any[];
+    getDataCertificates: ()=> Promise <any>;
+    postDataCertificates: (data:postCertificates)=> Promise <any>;
+    deleteDataCertificates: (id:string)=> Promise <any>;
+    updateDataCertificates: (data:UpdateCertificates)=> Promise <any>;
+}
+//=-=-=-========-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 
 
